@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AID — Privacy Policy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #fafafa;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.25rem;
+    }
+    .effective {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+    h2 {
+      font-size: 1.15rem;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      color: #111;
+    }
+    p, li {
+      font-size: 0.95rem;
+      color: #333;
+    }
+    p { margin-bottom: 0.75rem; }
+    ul {
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    li { margin-bottom: 0.35rem; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.75rem 0 1rem;
+      font-size: 0.9rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    th {
+      background: #f5f5f5;
+      font-weight: 600;
+      color: #111;
+    }
+    .highlight {
+      background: #f0f7ff;
+      border-left: 3px solid #3b82f6;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+    }
+    a { color: #2563eb; }
+    .footer {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e5e5e5;
+      font-size: 0.85rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>AID Privacy Policy</h1>
+    <p class="effective">Effective date: March 5, 2026</p>
+
+    <p>AID ("we", "our", "the extension") is a browser extension that builds a behavioral personality profile from your interactions with AI chat platforms (ChatGPT and Claude). This profile is used to personalize how those AI assistants respond to you.</p>
+    <p>This policy explains what data we collect, how we use it, who we share it with, and how you can control or delete it.</p>
+
+    <h2>1. What Data We Collect</h2>
+
+    <table>
+      <tr>
+        <th>Data</th>
+        <th>Purpose</th>
+        <th>Stored where</th>
+      </tr>
+      <tr>
+        <td>Email address and password</td>
+        <td>Account authentication</td>
+        <td>Supabase Auth (server-side)</td>
+      </tr>
+      <tr>
+        <td>Chat message text (up to 1,200 characters per message)</td>
+        <td>Sent to an AI model for behavioral pattern extraction. Not stored in our database.</td>
+        <td>Transmitted to LLM, not persisted</td>
+      </tr>
+      <tr>
+        <td>Behavioral observations (e.g., "Prefers numbered steps")</td>
+        <td>Core profile data — describes how you think and communicate</td>
+        <td>Supabase database (server-side)</td>
+      </tr>
+      <tr>
+        <td>Short evidence quotes (brief excerpts from your messages)</td>
+        <td>Support and validate each behavioral observation</td>
+        <td>Supabase database (server-side)</td>
+      </tr>
+      <tr>
+        <td>Conversation context snippets (up to 1,200 characters)</td>
+        <td>Provide context around each observation at creation time</td>
+        <td>Supabase database (server-side)</td>
+      </tr>
+      <tr>
+        <td>Conversation IDs (platform-assigned identifiers)</td>
+        <td>Track which conversations observations came from</td>
+        <td>Supabase database (server-side)</td>
+      </tr>
+      <tr>
+        <td>Auth session tokens</td>
+        <td>Keep you logged in</td>
+        <td>Browser local storage (your device)</td>
+      </tr>
+      <tr>
+        <td>Conversation injection state (metadata only — no message text)</td>
+        <td>Track whether your profile was already injected into a conversation</td>
+        <td>Browser local storage (your device)</td>
+      </tr>
+    </table>
+
+    <div class="highlight">
+      <strong>What we do NOT collect:</strong> We do not store your full chat messages or conversation transcripts. We do not collect browsing history, cookies, personal files, or any data from sites other than ChatGPT and Claude. We do not use your data for advertising.
+    </div>
+
+    <h2>2. How We Use Your Data</h2>
+    <ul>
+      <li><strong>Profile building:</strong> Your chat messages are analyzed in real time by an AI model to extract behavioral patterns — how you communicate, learn, and solve problems. Only the resulting observations are stored, not the messages themselves.</li>
+      <li><strong>Profile injection:</strong> Your behavioral profile is prepended to your messages on supported platforms so the AI assistant can adapt its responses to your style.</li>
+      <li><strong>Profile consolidation:</strong> Periodically, raw observations are synthesized into higher-confidence patterns by an AI model. This is capped at 10 runs per user per 30-day period.</li>
+    </ul>
+
+    <h2>3. Third-Party Services</h2>
+    <p>We use the following third-party services to operate AID:</p>
+    <table>
+      <tr>
+        <th>Service</th>
+        <th>Purpose</th>
+        <th>Data shared</th>
+      </tr>
+      <tr>
+        <td><a href="https://supabase.com/privacy">Supabase</a></td>
+        <td>Authentication, database, server functions</td>
+        <td>Email, password (auth only), behavioral observations, evidence quotes, context snippets</td>
+      </tr>
+      <tr>
+        <td><a href="https://openrouter.ai/privacy">OpenRouter</a></td>
+        <td>AI model API gateway</td>
+        <td>Message text (for analysis), behavioral observations</td>
+      </tr>
+      <tr>
+        <td><a href="https://www.deepseek.com/privacy">DeepSeek</a> (via OpenRouter)</td>
+        <td>AI model for behavioral extraction and consolidation</td>
+        <td>Message text (for analysis), behavioral observations</td>
+      </tr>
+      <tr>
+        <td><a href="https://policies.google.com/privacy">Google Fonts</a></td>
+        <td>UI typography</td>
+        <td>Your IP address (standard web font loading)</td>
+      </tr>
+    </table>
+    <p>We do not sell, rent, or trade your personal data to any third party.</p>
+
+    <h2>4. Data Security</h2>
+    <ul>
+      <li>All data in transit is encrypted via HTTPS/TLS.</li>
+      <li>Database access is enforced by Row Level Security — each user can only access their own data.</li>
+      <li>Authentication tokens are stored in your browser's local storage and are never shared with third parties.</li>
+      <li>Server-side functions authenticate every request with a valid user token before processing.</li>
+    </ul>
+
+    <h2>5. Data Retention and Deletion</h2>
+    <ul>
+      <li>Your behavioral profile data is retained as long as your account is active.</li>
+      <li>You can <strong>reset your profile</strong> at any time from the AID dashboard, which deletes all observations and your profile summary.</li>
+      <li>You can <strong>delete individual observations</strong> from the dashboard at any time.</li>
+      <li>To delete your account entirely, contact us at the email below.</li>
+    </ul>
+
+    <h2>6. Permissions</h2>
+    <p>The extension requests the following browser permissions:</p>
+    <ul>
+      <li><strong>storage:</strong> Save your login session and conversation state locally on your device.</li>
+      <li><strong>activeTab:</strong> Interact with the currently active tab when it is on a supported platform.</li>
+      <li><strong>Host access</strong> (chatgpt.com, chat.openai.com, claude.ai): Read and modify page content on these specific sites to intercept chat messages and inject your profile.</li>
+    </ul>
+    <p>The extension does not request access to any other websites, your browsing history, bookmarks, downloads, or any other browser data.</p>
+
+    <h2>7. Children's Privacy</h2>
+    <p>AID is not intended for use by anyone under the age of 13. We do not knowingly collect data from children under 13.</p>
+
+    <h2>8. Changes to This Policy</h2>
+    <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated effective date. Continued use of the extension after changes constitutes acceptance of the updated policy.</p>
+
+    <h2>9. Contact</h2>
+    <p>If you have questions about this privacy policy or want to request account deletion, contact us at:</p>
+    <p><a href="mailto:gavin@aidpersonality.com">gavin@aidpersonality.com</a></p>
+
+    <div class="footer">
+      AID — AI Personality Profile System
+    </div>
+  </div>
+</body>
+</html>
